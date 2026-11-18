@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#01030a">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Glitch · Night Sky VR</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script type="importmap">{ "imports": { "three": "./lib/three.module.min.js" } }</script>
+</head>
+<body data-mode="menu">
+  <canvas id="scene"></canvas>
+
+  <div id="loading">LOADING THE STARS…</div>
+
+  <!-- start menu (the live sky turns slowly behind it) -->
+  <main id="menu">
+    <div class="menu-inner">
+      <div class="eyebrow"><span class="red">[A-1]</span> NIGHT SKY · VR EXPERIENCE</div>
+      <h1>GLITCH</h1>
+      <p class="lede">Step inside the night sky. Look around, find the constellations that glow, and discover their stories.</p>
+
+      <div class="actions">
+        <button id="btn-vr" class="primary">Enter VR · headset</button>
+        <button id="btn-screen">Explore on screen</button>
+      </div>
+
+      <div class="controls">
+        <div><b>Head</b><span>Look around the sky</span></div>
+        <div><b>Joystick ← →</b><span>Turn the sky</span></div>
+        <div><b>Joystick ↑ ↓</b><span>Zoom in / out</span></div>
+        <div><b>A / trigger</b><span>Select · press again for info</span></div>
+        <div><b>B</b><span>Back</span></div>
+        <div><b>X</b><span>Next constellation (tour)</span></div>
+      </div>
+
+      <details id="remote-panel">
+        <summary>Remote check &amp; button setup</summary>
+        <div class="remote-body">
+          <div class="row"><span class="k">Remote</span><span id="remote-name">none yet — press a button on the remote</span></div>
+          <div class="row"><span class="k">Last input</span><b id="last-input">nothing yet</b></div>
+          <div class="row"><span class="k">Joystick</span><div class="stick"><i id="stick-dot"></i></div></div>
+          <div class="btns">
+            <button id="learn-select">Set SELECT button</button>
+            <button id="learn-back">Set BACK button</button>
+            <button id="reset-map" class="ghost">Reset</button>
+          </div>
+          <p class="note">Put the remote in <b>Game mode</b> for the joystick (see README). If the joystick dot above doesn’t move, try another mode — arrow keys and mouse clicks work too.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Settings</summary>
+        <div class="settings">
+          <label><input type="checkbox" id="set-music"> Ambient space music</label>
+          <label><input type="checkbox" id="set-gaze"> Gaze to select (look at something for 2 s — no remote needed)</label>
+          <label><input type="checkbox" id="set-lines"> Always show faint constellation lines</label>
+          <label class="range">Lens spacing <input type="range" id="set-lens" min="-0.3" max="0.3" step="0.01"></label>
+          <label class="range">VR field of view <input type="range" id="set-fov" min="60" max="100" step="1"></label>
+        </div>
+      </details>
+    </div>
+  </main>
+
+  <!-- small toolbar for screen mode -->
+  <nav id="screen-ui">
+    <button id="ui-menu">← Menu</button>
+    <button id="ui-back">Back</button>
+    <button id="ui-next">Next ›</button>
+    <button id="ui-lines">Lines</button>
+    <button id="ui-motion">Motion</button>
+    <button id="ui-music" data-music>♪ Music on</button>
+    <button id="ui-vr" class="primary">VR</button>
+  </nav>
+
+  <div id="rotate-hint">Turn your phone sideways ↻</div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
